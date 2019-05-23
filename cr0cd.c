@@ -33,7 +33,7 @@ static ssize_t cr0cd_proc_read(struct file *file, char __user *buf,
 
   printk("%s IS READ\n", DRIVER_NAME);
 
-  asm("mov %cr0, %rax; mov %rax, CR0" ::: "rax"); // read
+  asm("mov %%cr0, %%rax; mov %%rax, CR0" ::: "rax"); // read
   int_to_bits(CR0, bits);
   bits[32] = '\0';
 
@@ -48,7 +48,7 @@ static ssize_t cr0cd_proc_write(struct file *file, const char __user *buf,
   char mode[10];
 
   printk("%s IS WRITTEN\n", DRIVER_NAME);
-  asm("mov %cr0, %rax; mov %rax, CR0" ::: "rax"); // read
+  asm("mov %%cr0, %%rax; mov %%rax, CR0" ::: "rax"); // read
 
   bits[32] = '\0';
 
@@ -68,7 +68,7 @@ static ssize_t cr0cd_proc_write(struct file *file, const char __user *buf,
     CR0 &= ~(1 << 30);
   }
 
-  asm("mov CR0, %rax; mov %rax, %cr0" ::: "rax"); // write
+  asm("mov CR0, %%rax; mov %%rax, %%cr0" ::: "rax"); // write
 
   int_to_bits(CR0, bits);
 
