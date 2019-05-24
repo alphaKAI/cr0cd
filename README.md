@@ -15,10 +15,10 @@ CR0 exists on each of CPU core, you need specify which core will be disabled by 
 
 ```
 $ sudo insmod cr0cd.ko
-$ taskset -s -c $CORE_NUMBER echo 1 > /proc/cr0cd # Disable CPU Cache
-$ taskset -s -c $CORE_NUMBER some command # run on CPU Cache is disabled
-$ taskset -s -c $CORE_NUMBER echo 0 > /proc/cr0cd # Enable CPU Cache
-$ taskset -s -c $CORE_NUMBER ./cr0cd_reader # display current CR0 bits
+$ taskset -c $CORE_NUMBER echo 1 > /proc/cr0cd # Disable CPU Cache
+$ taskset -c $CORE_NUMBER some command # run on CPU Cache is disabled
+$ taskset -c $CORE_NUMBER echo 0 > /proc/cr0cd # Enable CPU Cache
+$ taskset -c $CORE_NUMBER ./cr0cd_reader # display current CR0 bits
 ```
 
 ## Screenshot
