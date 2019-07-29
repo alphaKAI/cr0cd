@@ -56,7 +56,7 @@ static ssize_t cr0cd_proc_write(struct file *file, const char __user *buf,
 
   printk("<BEFORE> CURRENT CR0: %s", bits);
 
-  copy_from_user(mode, buf, count);
+  copy_from_user(mode, buf, 10);
 
   if(mode[0] == '1') { // disable
     printk("[DISABLE] CPU Cache\n");
